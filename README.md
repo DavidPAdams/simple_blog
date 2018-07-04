@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+David Adams
+david.riding.rails@gmail.com
 
-Things you may want to cover:
+This is a simple blog application from work related to the Code Immersion course from Tech Talent South
 
-* Ruby version
+It is not set up for deployment, but is a development exercise written with Ruby 2.3.3 and Rals 5.1.6, and the database is SQLite3
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
