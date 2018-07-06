@@ -9,6 +9,10 @@
   </head>
 
   <body>
-    <%= yield %>
+  	<div class="container-fluid">
+      <%= render 'layouts/navbar' %>
+      <p class="notice"><%= notice %></p>
+	    <%= yield %>
+	  </div>
   </body>
 </html>
