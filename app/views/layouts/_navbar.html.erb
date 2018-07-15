@@ -12,6 +12,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><%= link_to "Compose New Article", new_article_path %></li>
+        <li><%= link_to "My Articles", user_articles_path(name: current_user.username) %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
