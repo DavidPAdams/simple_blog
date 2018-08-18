@@ -5,9 +5,10 @@
         <div class="row">
           <div class="col-md-7">
             <b><strong>Title: </strong><%= @article.title %></b>
+            <p><em>posted on <%= @article.created_at.strftime("%B %e, %Y at %l:%M %p") %></em></p>
           </div>
           <div class="col-md-5">
-            <strong>By: </strong><%= @article.user.username %>  
+            <strong>By: </strong><%= link_to @article.user.username, user_articles_path(name: @article.user.username) %>  
             <% if @article.user.avatar.blank? == false %>
               <%= image_tag @article.user.avatar.url, size:30, class: "user-pic-nav" %>
             <% end %>
@@ -33,17 +34,15 @@
       <div class="panel-body" style="height:31em; overflow-y:scroll;">
         <ul>
           <div id="comments">
-            <% @article.comments.each do |comment| %>
+            <% @article.comments.reverse_each do |comment| %>
               <li>
                 <% if comment.user.avatar.blank? == false %>
                   <%= image_tag comment.user.avatar.url, size:25, class: "user-pic-nav" %>
                 <% end %>
-                <%= link_to comment.user.username, user_articles_path(name: comment.user.username) %> said: <br><%= simple_format(comment.comment_entry.html_safe) %>
-                <div class="pull-right">
-                  <% if current_user.username == comment.user.username %>
-                    <%= link_to 'Delete', comment, class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?'} %>
-                  <% end %>
-                </div>
+                <%= time_ago_in_words(comment.created_at) %> ago <%= link_to comment.user.username, user_articles_path(name: comment.user.username) %> said: <br><%= simple_format(comment.comment_entry.html_safe) %>
+                <% if current_user.username == comment.user.username %>
+                  <%= link_to 'Delete', comment, class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?'} %>
+                <% end %>
               </li>
             <% end %>
           </div>

@@ -1,23 +1,23 @@
 class ArticlesController < ApplicationController
-	before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
 
-	def user_articles
-		@user = User.find_by(username: params[:name])
-	end
+  def user_articles
+    @user = User.find_by(username: params[:name])
+  end
 
   def index
-  	@articles = Article.all.page(params[:page])
+    @articles = Article.all.page(params[:page])
   end
 
   def new
-  	@article = Article.new
+    @article = Article.new
   end
 
   def edit
   end
 
   def show
-  	@comment = Comment.new
+    @comment = Comment.new
   end
 
   def create
@@ -56,11 +56,11 @@ class ArticlesController < ApplicationController
 
   private
 
-  	def set_article
-  		@article = Article.find(params[:id])
-  	end
+  def set_article
+    @article = Article.find(params[:id])
+  end
 
-  	def article_params
-  		pearams require(:article).permit(:title, :author, :blog_entry, :user_id)
-  	end
+  def article_params
+    params.require(:article).permit(:title, :author, :blog_entry, :user_id)
+  end
 end
